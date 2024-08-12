@@ -127,7 +127,16 @@ body.loaded .content {
     z-index: 20;
     text-align: center;
 }
-
+#playAgainBtn{
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(0, 162, 255);
+    padding: 5px 10px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
 .popup-content {
     color: black;
 }
