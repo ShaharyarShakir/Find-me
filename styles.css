@@ -130,7 +130,14 @@ body.loaded .content {
     z-index: 20;
     text-align: center;
 }
-
+#playAgainBtn{
+    background-color: #3BBA9C;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .popup-content {
     color: black;
 }
@@ -149,6 +156,20 @@ footer {
     font-size: 65px;
     color: rgb(254, 251, 251);
     
+}
+#startBtn{
+    width: 200px;
+    background-color: #3BBA9C;
+    font-size: 2rem;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#startBtn:hover{
+    background-color: white;
+    color: #3BBA9C;
 }
 @media (min-width: 768px) {
     .header-logo {
