@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function startGame() {
         playGameBtn.style.display = "none"; // Hide Play Game button
-        footerText.textContent = "The Bags are shuffling";
+        footerText.textContent = "The Cards are shuffling";
 
         chicken.style.opacity = "1";
         correctBucketIndex = Math.floor(Math.random() * 3);
@@ -84,7 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
             resultMessage.textContent = "Congrats! You found the ring!";
             updateScore();
         } else {
-            resultMessage.textContent = "Wrong choice! Try again.";
+            resultMessage.innerHTML = `
+                Wrong choice! Try again.<br>
+                <a href="https://play.rhym.io/" target="_blank" class="buy-now-btn">Buy Now</a>
+            `;
         }
 
         showPopup();
@@ -109,9 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     playGameBtn.addEventListener("click", startGame);
-
-    // Remove this if you don't want the game to start automatically
-    // startGame();
 });
 
 window.addEventListener('load', () => {

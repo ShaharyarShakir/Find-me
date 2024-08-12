@@ -1,92 +1,90 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgb(184, 186, 226);
+    background: linear-gradient(135deg, #f44336, #d32f2f);
     color: white;
     text-align: center;
     position: relative;
-  
-
 }
+
 .circle {
     position: relative;
     background-color: #2E3047;
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    box-shadow: inset 0 0 10px 10px #3c3f5880;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 .border {
     width: 210px;
     height: 210px;
-    border: 2px solid #3BBA9C;
-    border-radius: 100%;
+    border: 2px solid #FFEB3B;
+    border-radius: 50%;
     position: absolute;
-    animation: spin 10s linear calc(-1s*var(--i)) infinite;
+    animation: spin 10s linear infinite;
 }
 
 .loadingText {
-    color: #3BBA9C;
+    color: #FFEB3B;
+    font-size: 18px;
+    font-weight: bold;
     position: absolute;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotateX(0) rotateY(20deg) rotateZ(0);
-    }
-
-    25% {
-        transform: rotateX(360deg) rotateY(20deg) rotateZ(90deg);
-    }
-
-    50% {
-        transform: rotateX(0) rotateY(20deg) rotateZ(180deg);
-    }
-
-    75% {
-        transform: rotateX(-360deg) rotateY(20deg) rotateZ(270deg);
-    }
-
-    100% {
-        transform: rotateX(0) rotateY(20deg) rotateZ(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
+
 .content {
     display: none;
     color: white;
     text-align: center;
-  
+    background-image: url('download.jpeg');
+    background-size: cover;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 body.loaded .circle {
     display: none;
-    
 }
 
 body.loaded .content {
     display: block;
-    background-image: url(treasure.jpg);
-    background-size: cover;
-   
 }
 
 .header {
     margin-bottom: 30px;
 }
 
-.logo {
-    width: 100px;
-    margin-bottom: 10px;
+.header-h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #FFC107;
+}
+
+.header-heading {
+    font-size: 1.5rem;
+    margin: 10px 0;
 }
 
 .game-container {
@@ -101,9 +99,14 @@ body.loaded .content {
     height: 80px;
     background: url('purse.png') no-repeat center/cover;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 10;
     position: relative;
+}
+
+.bucket:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
 }
 
 .chicken {
@@ -116,6 +119,7 @@ body.loaded .content {
     transition: top 0.8s ease, opacity 0.8s ease;
     z-index: 5;
 }
+
 /* Popup Styles */
 .popup {
     display: none;
@@ -123,23 +127,24 @@ body.loaded .content {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #FFEB3B;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     z-index: 20;
     text-align: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
-#playAgainBtn{
-    background-color: #3BBA9C;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+.popup.show {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
+
 .popup-content {
-    color: black;
+    color: #333;
+    font-size: 1.2rem;
 }
 
 .popup-content p {
@@ -149,42 +154,41 @@ body.loaded .content {
 footer {
     margin-top: 40px;
     font-size: 18px;
+    color: #FFEB3B;
 }
-.header-logo{
-    
-    font-weight: bolder;
-    font-size: 65px;
-    color: rgb(254, 251, 251);
-    
-}
-#startBtn{
-    width: 200px;
-    background-color: #3BBA9C;
-    font-size: 2rem;
-    color: white;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-#startBtn:hover{
-    background-color: white;
-    color: #3BBA9C;
-}
-.play-game-btn{
-    background-color: #3BBA9C;
-    color: white;
+
+/* Button Styling */
+button {
     padding: 10px 20px;
+    background-color: #FFC107;
+    color: #2E3047;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+button:hover {
+    background-color: #FFEB3B;
+    transform: scale(1.05);
+}
+
+.play-game-btn {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#playAgainBtn {
+    margin-top: 15px;
+}
+
 @media (min-width: 768px) {
-    .header-logo {
-        font-size: 3.5rem;
+    .header-h1 {
+        font-size: 3rem;
     }
 
-    .header-h1, .header-heading {
+    .header-heading {
         font-size: 2rem;
     }
 
@@ -204,4 +208,27 @@ footer {
     footer {
         font-size: 1.5rem;
     }
+}
+/* Style for Buy Now Button */
+.buy-now-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #FF6F61; /* KFC red color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buy-now-btn:hover {
+    background-color: #E94E77; /* Slightly darker red on hover */
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+.buy-now-btn:active {
+    background-color: #D43F4F; /* Even darker red when button is clicked */
+    transform: scale(1); /* Returns to original size */
 }
