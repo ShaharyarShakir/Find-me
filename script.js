@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scoreDisplay = document.getElementById("scoreDisplay");
     const winStreakDisplay = document.getElementById("winStreakDisplay"); // Reference to the correct win streak display element
     const loadingSpinner = document.getElementById("loadingSpinner");
+    const startBtn = document.getElementById("startBtn");
     let correctBucketIndex = 0;
     let score = 0;
     let winStreak = 0; // Initialize the win streak counter
@@ -113,8 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
         hidePopup();
         startGame();
     });
-
+startBtn.addEventListener("click", () => {
     startGame();
+});
 });
 
 window.addEventListener('load', () => {
