@@ -171,6 +171,14 @@ footer {
     background-color: white;
     color: #3BBA9C;
 }
+.play-game-btn{
+    background-color: #3BBA9C;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 @media (min-width: 768px) {
     .header-logo {
         font-size: 3.5rem;

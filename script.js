@@ -5,12 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultMessage = document.getElementById("resultMessage");
     const playAgainBtn = document.getElementById("playAgainBtn");
     const scoreDisplay = document.getElementById("scoreDisplay");
-    const winStreakDisplay = document.getElementById("winStreakDisplay"); // Reference to the correct win streak display element
+    const playGameBtn = document.getElementById("playGameBtn");
+    const footerText = document.getElementById("footerText");
     const loadingSpinner = document.getElementById("loadingSpinner");
-    const startBtn = document.getElementById("startBtn");
     let correctBucketIndex = 0;
     let score = 0;
-    let winStreak = 0; // Initialize the win streak counter
 
     function hideLoadingSpinner() {
         loadingSpinner.style.display = "none";
@@ -21,8 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function startGame() {
-        chicken.style.opacity = "1";
+        playGameBtn.style.display = "none"; // Hide Play Game button
+        footerText.textContent = "The Bags are shuffling";
 
+        chicken.style.opacity = "1";
         correctBucketIndex = Math.floor(Math.random() * 3);
         const targetBucket = buckets[correctBucketIndex];
         const targetBucketRect = targetBucket.getBoundingClientRect();
@@ -82,11 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (index === correctBucketIndex) {
             resultMessage.textContent = "Congrats! You found the ring!";
             updateScore();
-            winStreak++; // Increment the win streak by 1
-            winStreakDisplay.textContent = `Win Streak: ${winStreak}`;
         } else {
             resultMessage.textContent = "Wrong choice! Try again.";
-            resetWinStreak(); // Reset the win streak after an incorrect guess
         }
 
         showPopup();
@@ -95,11 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateScore() {
         score += 10;
         scoreDisplay.textContent = `Score: ${score}`;
-    }
-
-    function resetWinStreak() {
-        winStreak = 0; // Reset the win streak counter
-        winStreakDisplay.textContent = `Win Streak: ${winStreak}`; // Update the display to show Win Streak: 0
     }
 
     function showPopup() {
@@ -114,9 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
         hidePopup();
         startGame();
     });
-startBtn.addEventListener("click", () => {
-    startGame();
-});
+
+    playGameBtn.addEventListener("click", startGame);
+
+    // Remove this if you don't want the game to start automatically
+    // startGame();
 });
 
 window.addEventListener('load', () => {
