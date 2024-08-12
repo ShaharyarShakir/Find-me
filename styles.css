@@ -99,7 +99,7 @@ body.loaded .content {
 .bucket {
     width: 80px;
     height: 80px;
-    background: url('pngtree-open-red-purse-purse-png-image_10297671.png') no-repeat center/cover;
+    background: url('purse.png') no-repeat center/cover;
     cursor: pointer;
     transition: transform 0.3s ease;
     z-index: 10;
