@@ -74,10 +74,7 @@ body.loaded .circle {
 }
 
 body.loaded .content {
-    display: block;
-    background-image: url(treasure.jpg);
-    background-size: cover;
-   
+    display: block;   
 }
 
 .header {
